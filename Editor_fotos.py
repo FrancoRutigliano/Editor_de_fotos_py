@@ -15,7 +15,15 @@ for filename in os.listdir(path):
 
 #En esta línea, se aplica un filtro de nitidez (sharpen) a la imagen abierta
 
-    edit = img.filter(ImageFilter.SHARPEN)
+
+    edit = img.filter(ImageFilter.SHARPEN).convert('L').rotate(0)
+
+
+    factor = 1.5
+    
+    enhancer = ImageEnhance.Contrast(edit)
+
+    edit = enhancer.enhance(factor)
 
 #quí se obtiene el nombre base del archivo sin la extensión. 
 # Se selecciona el primer elemento de la tupla, que corresponde al nombre del archivo sin la extensión.
